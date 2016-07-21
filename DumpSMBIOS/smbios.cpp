@@ -143,7 +143,7 @@ bool SMBIOS::ProcSysInfo(SMBIOS* T, void* p)
 	T->m_wszSysManufactor = new WCHAR[nManufactor + 1];
 	T->m_wszSysProductName = new WCHAR[nProductName + 1];
 	T->m_wszSysVersion = new WCHAR[nVersion + 1];
-	T->m_wszSysSerialNumber = new WCHAR[nSerialNumber];
+	T->m_wszSysSerialNumber = new WCHAR[nSerialNumber +1 ]; //Denis 21/07/2016
 
 	if (T->m_wszSysManufactor)
 	{
@@ -321,36 +321,37 @@ SMBIOS::SMBIOS() :
 
 SMBIOS::~SMBIOS()
 {
+	//Denis 21/07/2016
 	if (m_wszBIOSVendor)
-		delete m_wszBIOSVendor;
+		delete [] m_wszBIOSVendor;
 	if (m_wszBIOSVersion)
-		delete m_wszBIOSVersion;
+		delete [] m_wszBIOSVersion;
 	if (m_wszBIOSReleaseDate)
-		delete m_wszBIOSReleaseDate;
+		delete [] m_wszBIOSReleaseDate;
 	if (m_wszSysManufactor)
-		delete m_wszSysManufactor;
+		delete [] m_wszSysManufactor;
 	if (m_wszSysProductName)
-		delete m_wszSysProductName;
+		delete [] m_wszSysProductName;
 	if (m_wszSysVersion)
-		delete m_wszSysVersion;
+		delete [] m_wszSysVersion;
 	if (m_wszSysSerialNumber)
-		delete m_wszSysSerialNumber;
+		delete [] m_wszSysSerialNumber;
 	if (m_wszSysSKU)
-		delete m_wszSysSKU;
+		delete [] m_wszSysSKU;
 	if (m_wszSysFamily)
-		delete m_wszSysFamily;
+		delete [] m_wszSysFamily;
 	if (m_wszBoardManufactor)
-		delete m_wszBoardManufactor;
+		delete [] m_wszBoardManufactor;
 	if (m_wszBoardProductName)
-		delete m_wszBoardProductName;
+		delete [] m_wszBoardProductName;
 	if (m_wszBoardVersion)
-		delete m_wszBoardVersion;
+		delete [] m_wszBoardVersion;
 	if (m_wszBoardSerialNumber)
-		delete m_wszBoardSerialNumber;
+		delete [] m_wszBoardSerialNumber;
 	if (m_wszBoardAssetTag)
-		delete m_wszBoardAssetTag;
+		delete [] m_wszBoardAssetTag;
 	if (m_wszBoardLocation)
-		delete m_wszBoardLocation;
+		delete [] m_wszBoardLocation;
 }
 
 const SMBIOS& SMBIOS::getInstance(void)
